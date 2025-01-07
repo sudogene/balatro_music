@@ -62,7 +62,7 @@ In a `JokerPack` state, the player can ONLY progress to the `Shop` state which i
 ```
 Pick -> {Round, Pick}
 Round -> {Shop, END}
-Shop -> {TarotPack, CardPack, JokerPack, PlanetPack}
+Shop -> {TarotPack, CardPack, JokerPack, PlanetPack, Pick}
 *Pack -> {Shop}
 ```
 where `END` indicates the player losing and the music ends. Currently, the `None` type is being used to represent this state.
