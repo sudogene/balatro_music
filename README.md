@@ -8,26 +8,29 @@ Generates the background music (no sound effects) of a random Balatro run using 
 
 The generation follows the game logic.
 
+<<<<<<< HEAD
+## Usage and demo output: [`balatro.mp3`](./balatro.mp3)
+=======
 ## Usage and sample output: [`balatro.mp3`](./balatro.mp3)
+>>>>>>> refs/remotes/origin/main
 
 Usage: `python balatro.py`
 
-There is a sample MP3 file with this random run with Ante 8/8 in 16 minutes 46 seconds.
+There is a demo MP3 file with this random run with Ante 4/8 in 8 minutes 1 second. Note: It doesn't take 8 minutes to generate that output, the 8 minutes is the demo audio duration.
 ```
 $ python balatro.py
 
 Creating run...
-  > Duration: 00:16:46
-  > Ante: 8/8
-  > Round: 22
+  > Duration: 00:08:01
+  > Ante: 4/8
+  > Round: 10
   > Card packs: 2
-  > Joker packs: 10
-  > Tarot packs: 4
-  > Planet packs: 5
+  > Joker packs: 0
+  > Tarot packs: 3
+  > Planet packs: 1
 Creating track...
 Completed!
 ```
-
 
 ## File requirements
 
@@ -68,15 +71,20 @@ Shop -> {TarotPack, CardPack, JokerPack, PlanetPack}
 ```
 where `END` indicates the player losing and the music ends. Currently, the `None` type is being used to represent this state.
 
-#### Mapping of game state to theme
-Main Theme: `Pick`, `Round`
+#### Mapping of game state to theme:
+* Main Theme: `Pick`, `Round`
 
-Shop Theme: `Shop`
+* Shop Theme: `Shop`
 
-Tarot Pack Theme: `TarotPack`, `JokerPack`, `CardPack`
+* Tarot Pack Theme: `TarotPack`, `JokerPack`, `CardPack`
 
-Planet Pack Theme: `PlanetPack`
+* Planet Pack Theme: `PlanetPack`
 
-Boss Blind Theme: `Round(Boss)`
+* Boss Blind Theme: `Round(Boss)`
 
-
+## Work in progress (maybe)
+* Seeds for generating the run, staying true to Balatro.
+* [Optional] Pack opening SFX `explosion1.ogg` for `Shop -> Pack` transitions.
+* [Optional] Win SFX `win.ogg` after Ante 8/8, and gameover track `06. You Lose!.mp3`.
+* [Optional] Restarting (new game) from gameover - tricky to merge the audio tracks fluently.
+* [Optional] Random insertion of Jimbo voices.
