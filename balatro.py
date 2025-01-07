@@ -26,8 +26,8 @@ State = namedtuple('State', 'theme type blind ante round')
 DURATION = {
     'Pick': range(3_000, 5_000, 500),
     'Round': range(10_000, 40_000, 500),
-    'Shop': range(4_000, 7_000, 500),
-    'ShopEmpty': range(2_000, 3_000, 500),
+    'Shop': range(4_000, 10_000, 500),
+    'ShopEmpty': range(2_000, 4_000, 500),
     'CardPack': range(5_000, 6_000, 500),
     'JokerPack': range(5_000, 12_000, 500),
     'TarotPack': range(8_000, 16_000, 500),
@@ -37,7 +37,7 @@ DURATION = {
 MOVEMENT = {
     'Pick': (('Round', 'Pick',), (0.95, 0.05)),
     'Round': (('Shop', None), (0.95, 0.05)),
-    'Shop': (('JokerPack', 'TarotPack', 'CardPack', 'PlanetPack', 'Pick'), (0.35, 0.1, 0.1, 0.1, 0.35)),
+    'Shop': (('JokerPack', 'TarotPack', 'CardPack', 'PlanetPack', 'Pick'), (0.175, 0.175, 0.175, 0.175, 0.3)),
     'ShopEmpty': (('Pick',), (1.0,)),
     'CardPack': (('Shop',), (1.0,)), 
     'JokerPack': (('Shop',), (1.0,)), 
@@ -122,7 +122,7 @@ def create_run():
     return run
 
 
-def create_track(run, filename='balatro.mp3', fade_duration=50):
+def create_track(run, filename='balatro.mp3', fade_duration=100):
     stitched_track = AudioSegment.empty()
     timestamp = 0
     prev_theme = TRACK_MAIN
@@ -136,9 +136,11 @@ def create_track(run, filename='balatro.mp3', fade_duration=50):
             segment = audio[start:] + audio[:end]
         
         if state.theme != prev_theme:
-            segment = segment.fade_in(fade_duration).fade_out(fade_duration)
-        prev_theme = state.theme
+            stitched_track = stitched_track.fade_out(fade_duration) + segment.fade_in(fade_duration)
+        else:
+            stitched_track += segment
 
+        prev_theme = state.theme
         timestamp += segment_duration
         
         stitched_track += segment
