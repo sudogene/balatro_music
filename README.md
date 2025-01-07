@@ -8,7 +8,7 @@ Generates the background music (no sound effects) of a random Balatro run using 
 
 The generation follows the game logic.
 
-## Usage and sample output: `balatro.mp3`
+## Usage and sample output: [`balatro.mp3`](./balatro.mp3)
 
 Usage: `python balatro.py`
 
