@@ -1,7 +1,9 @@
 from collections import namedtuple
+import sys
 import random
 import datetime
 from pydub import AudioSegment
+from pydub.exceptions import CouldntDecodeError
 
 
 TRACK_MAIN = 'tracks/01. Main Theme.mp3'
@@ -10,7 +12,12 @@ TRACK_TAROT = 'tracks/03. Tarot Pack Theme.mp3'
 TRACK_PLANET = 'tracks/04. Planet Pack Theme.mp3'
 TRACK_BOSS = 'tracks/05. Boss Blind Theme.mp3'
 
-AUDIO = {name: AudioSegment.from_file(name) for name in [TRACK_MAIN, TRACK_SHOP, TRACK_TAROT, TRACK_PLANET, TRACK_BOSS]}
+try:
+    AUDIO = {name: AudioSegment.from_file(name) for name in [TRACK_MAIN, TRACK_SHOP, TRACK_TAROT, TRACK_PLANET, TRACK_BOSS]}
+except CouldntDecodeError as e:
+    print('Track files are invalid. Note: If these are dummy files from the repo, read the README section "File requirements"!')
+    sys.exit(1)
+
 BASE_LENGTH = len(AUDIO[TRACK_MAIN])
 
 State = namedtuple('State', 'theme type blind ante round')
@@ -141,9 +148,6 @@ def create_track(run, filename='balatro.mp3', fade_duration=50):
 if __name__ == '__main__':
     print('Creating run...')
     run = create_run()
-    
-    #while run[-1][0].ante < 8:
-    #    run = create_run()
 
     last = run[-1][0]
     packs = {'Card': 0, 'Joker': 0, 'Tarot': 0, 'Planet': 0}
@@ -163,7 +167,3 @@ if __name__ == '__main__':
     create_track(run)
 
     print('Completed!')
-
-    #print('DEBUG')
-    #for s, d in run:
-    #    print('Ante', s.ante, '| Round', s.round, '| Blind', s.blind, '| Type', s.type)
