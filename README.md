@@ -3,7 +3,7 @@
 </p>
 
 
-# Balatro Run Music
+# Balatro Music Generator
 Generates the background music (no sound effects) of a random Balatro run using a combination of the five themes: `Main Theme`, `Shop Theme`, `Tarot Pack Theme`, `Planet Pack Theme`, `Boss Blind Theme`. 
 
 The generation follows the game logic.
@@ -12,7 +12,7 @@ The generation follows the game logic.
 
 Usage: `python balatro.py`
 
-There is a demo MP3 file with this random run with Ante 4/8 in 8 minutes 1 second. Note: It doesn't take 8 minutes to generate that output, the 8 minutes is the demo audio duration.
+There is a demo MP3 file with this random run with Ante 4/8 in ~8 minutes. Note: 8 minutes is the length of the MP3, not the time taken to generate it.
 ```
 $ python balatro.py
 
