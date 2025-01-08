@@ -42,6 +42,8 @@ Looks like the joke's on us! Unfortunately, I cannot share the audio files. But,
 #### Where to get the files?
 I'm literally a fool, what's your excuse?
 
+`f03f9fd`
+
 ## Logic explanation (for the Blueprint Jokers)
 There is a simplified "Game State" to track the current state (music to be played) along with the duration of the music segment and the next game state to follow. The choices of the music duration and the next game state are all randomly selected from a set or range of choices.
 
