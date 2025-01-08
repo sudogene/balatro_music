@@ -10,19 +10,20 @@ The generation follows the game logic.
 
 ## Usage and sample output: [`balatro.mp3`](./balatro.mp3)
 
-Usage: `python balatro.py`
+Usage: `python balatro.py [seed]`
 
-There is a demo MP3 file with this random run with Ante 4/8 in ~8 minutes. Note: 8 minutes is the length of the MP3, not the time taken to generate it.
+There is a demo MP3 file with a seeded run reaching Ante 3/8 in ~6 minutes. Note: 6 minutes is the length of the MP3, not the time taken to generate it.
 ```
-$ python balatro.py
+$ python balatro.py DEMODEMO
 
 Creating run...
-  > Duration: 00:08:01
-  > Ante: 4/8
-  > Round: 10
+Seed: DEMODEMO
+  > Duration: 00:06:11
+  > Ante: 3/8
+  > Round: 6
   > Card packs: 2
-  > Joker packs: 0
-  > Tarot packs: 3
+  > Joker packs: 3
+  > Tarot packs: 1
   > Planet packs: 1
 Creating track...
 Completed!
